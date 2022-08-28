@@ -1,0 +1,59 @@
+
+h3{
+        text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .sign-in-content{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        background-color: rgb(48, 47, 47);
+        padding: 2rem;
+        /* width: 10%; */
+        border-radius: 13px;
+    }
+    .sign-in-content article{
+        display: flex;
+        flex-direction: column;
+        gap: 1.3rem;
+        justify-content: center;
+        /* align-items: center; */
+    }
+    .sign-in-content article .sign-in-input{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: left;
+        gap: 0.5rem;
+    }
+    .sign-in-content article .sign-in-input label{
+        font-weight: 500;
+    }
+    .sign-in-content article .sign-in-input input{
+        padding: 15px;
+        border: none;
+        border-radius: 7px;
+        background-color: rgb(63, 59, 59);
+        
+    }
+    .sign-in-content article button{
+        padding: 10px;
+        border-radius: 7px;
+        border: none;
+        background-color: gold;
+    }
+    .sign-in-content article p{
+        max-width: 100%;
+        font-size: small;
+        text-align: center;
+    }
+    .sign-in-content article p a{
+        color: white;
+    }
+    .google-login{
+        border: none;
+        border-radius: 20px;
+        font-size: 30px;
+    }
+}

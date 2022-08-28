@@ -1,0 +1,9 @@
+nav{
+    display: flex;
+    flex-direction: row;
+}
+
+img{
+    width: 100px;
+    height: 40px;
+}

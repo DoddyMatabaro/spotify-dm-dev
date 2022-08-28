@@ -1,44 +1,24 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
-import { GoogleLogin } from 'react-google-login';
-import { gapi } from 'gapi-script'; 
+import { clientGoogleId } from './assets/api';
+import Footer from './component/Footer';
+import Header from './component/Header';
+
 import SingIn from './component/SignIn';
-import { clientGoogleId } from './assets/api'
 
 function App() {
+  const [logIn, setLogIn] = useState(false)
 
-  useEffect(() => { //initialize gapi and client ID
-    const initClient = () => {
-          gapi.client.init({
-          clientId: clientGoogleId,
-          scope: ''
-        });
-     };
-     gapi.load('client:auth2', initClient);
-    });
-
-    const onSuccess=()=>{
-      console.log('====================================');
-      console.log('success:', res);
-      console.log('====================================');
-    }
-
-    const onFailure=()=>{
-      console.log('====================================');
-      console.log('Failed:', err);
-      console.log('====================================');
-    }
-    
   return (
     <div className="App">
-        <GoogleLogin 
-                  clientId={clientId}
-                  buttonText="Sign in with Google"
-                  onSuccess={onSuccess}
-                  onFailure={onFailure}
-                  cookiePolicy={'single_host_origin'}
-                  isSignedIn={true}
-        />
+        <Header/>
+             { logIn ? 
+                  <SingIn  clientGoogleId={clientGoogleId} /> 
+                :
+                  <h2>Test</h2>
+             }
+ 
+        <Footer />
     </div>
   )
 }
