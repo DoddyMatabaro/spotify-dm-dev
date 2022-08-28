@@ -3,6 +3,7 @@ import './App.css'
 import { clientGoogleId } from './assets/api';
 import Footer from './component/Footer';
 import Header from './component/Header';
+import Profile from './component/Profile';
 
 import SingIn from './component/SignIn';
 
@@ -15,7 +16,7 @@ function App() {
              { logIn ? 
                   <SingIn  clientGoogleId={clientGoogleId} /> 
                 :
-                  <h2>Test</h2>
+                  <Profile />
              }
  
         <Footer />

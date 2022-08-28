@@ -1,0 +1,27 @@
+.track-img{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 3px;
+}
+tr{
+    border-bottom: 1px solid white;
+}
+@media screen and (max-width: 768px) {
+    tbody tr .track-title{ 
+        display: flex;
+        flex-direction: row;
+        padding: 0.7rem;
+        text-align: center;
+        justify-content: center;
+        gap: 0.4rem;
+    }
+    td b{
+        margin-top: -6px;
+    }
+    .track-title + .track-album small{
+        margin-left: -90px;
+    }
+    .album{
+        display: none;
+    }
+}

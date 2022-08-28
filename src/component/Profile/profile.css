@@ -1,0 +1,84 @@
+.profile{
+    display: flex;
+    flex-direction: column;
+}
+.btn{
+    border: none;
+    border-radius: 5px;
+    padding: 0.4rem;
+    font-weight: bold;
+
+}
+.btn-primary{
+    background-color: gold;
+    color: black;
+}
+.btn-secondary{
+    background-color: rgb(58, 58, 57);
+    color: white;
+}
+
+@media screen and (max-width: 768px) {
+    .artist{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+        margin: 2rem;
+        gap: 1rem;
+    }
+    .artist img{
+        width: 11rem;
+        height: 11rem;
+        border-radius: 50%;
+    }
+    .artist-details{
+        padding: 1.3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+    .profile-type{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        /* align-items: ce; */
+        flex-wrap: wrap;
+        
+    }
+    .profile-type article{
+        border: solid 1px;
+        padding: 0.4rem;
+        margin: 0.2rem;
+        border-radius: 5px;
+    }
+    .profile-buttons{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 1rem;
+        margin-top: 2ren;
+    }
+    .profile-buttons .btn{
+        width: 50%;
+    }
+    .sort-links{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        list-style: none;
+    }
+    .sort-links li a {
+        text-decoration: none;
+        font-weight: bold;
+        color: white;
+    }
+
+
+}   
