@@ -9,7 +9,7 @@ import SingIn from './component/SignIn';
 
 function App() {
   const CLIENT_ID = "9b707ef30ad74876b0ebded1d118b9ce"
-  const REDIRECT_URI = "http://localhost:3000"
+  const REDIRECT_URI = "http://localhost:5174/callback/"
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
   const RESPONSE_TYPE = "token"
 
@@ -36,14 +36,24 @@ function App() {
      }
   return (
     <div className="App">
-        <Header/>
+        {/* <Header/> */}
              {/* { logIn ? 
                   <SingIn  clientGoogleId={clientGoogleId} /> 
                 :
                   <Profile />
              } */}
  
-        <Footer />
+        {/* <Footer /> */}
+
+        <div className="App">
+            <header className="App-header">
+                <h1>Spotify React</h1>
+                {!token ?
+                    <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>Login
+                        to Spotify</a>
+                    : <button onClick={logout}>Logout</button>}
+            </header>
+        </div>
     </div>
   )
 }
