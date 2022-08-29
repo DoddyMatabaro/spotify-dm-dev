@@ -15,20 +15,7 @@ function App() {
   const [artists,setArtists] = useState([]);
   const [searchKey, setSearchKey] = useState("");
 
-     const searchArtists = async (e) => {
-      e.preventDefault()
-      const {data} = await axios.get("https://api.spotify.com/v1/search", {
-          headers: {
-              Authorization: `Bearer ${token}`
-          },
-          params: {
-              q: searchKey,
-              type: "track,artist,album"
-          }
-      })
-  
-      setArtists(data.artists.items)
-  }
+
   
   const renderArtists = () => {
     return artists.map(artist => (
@@ -63,16 +50,13 @@ function App() {
  
         <Footer />
 
-        <div className="App">
-            <form onSubmit={searchArtists}>
-                <input type="text" onChange={e => setSearchKey(e.target.value)} />
-                <button type={"submit"}>Search</button>
-            </form>
+        {/* <div className="App">
+            
             <div>
               <h3>Resultat</h3>
               {renderArtists()}
             </div>
-        </div>
+        </div> */}
     </div>
   )
 }
