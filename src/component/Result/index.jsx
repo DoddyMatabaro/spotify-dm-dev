@@ -9,11 +9,13 @@ const Result = () => {
         <h2>Top tracks</h2>
         <table>
             <thead>
-                <th>#</th>
-                <th>Title</th>
-                <th className="album">Album</th>
-                <th>Type</th>
-                <th>-</th>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th className="album">Album</th>
+                    <th>Type</th>
+                    <th>-</th>
+                </tr>
             </thead>
             <tbody>
                 <tr>

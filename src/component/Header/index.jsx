@@ -1,10 +1,20 @@
-import React from 'react'
+import React,{ useEffect, useState} from 'react'
 import './header.css'
-const Header = () => {
+
+
+const Header = ({token, setToken}) => {
+      const logout = () => {
+        setToken("")
+        window.localStorage.removeItem("token")
+    }
+
   return (
-    <nav>
-        <img src='/public/logo.png' alt='DM dev.'/>
-    </nav>
+    <header>
+        <img src='/logo.png' alt='DM dev.'/>
+        <nav className="App-header">
+                {token ?<button onClick={logout}>Logout</button> : null}
+        </nav>
+    </header>
   )
 }
 
