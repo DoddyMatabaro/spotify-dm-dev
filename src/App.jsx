@@ -4,8 +4,8 @@ import { clientGoogleId } from './assets/api';
 import Footer from './component/Footer';
 import Header from './component/Header';
 import Profile from './component/Profile';
-
-import SingIn from './component/SignIn';
+import axios from 'axios';
+;import SingIn from './component/SignIn';
 
 function App() {
   const CLIENT_ID = "9b707ef30ad74876b0ebded1d118b9ce"
@@ -34,6 +34,22 @@ function App() {
         setToken("")
         window.localStorage.removeItem("token")
      }
+
+     const searchArtists = async (e) => {
+      e.preventDefault()
+      const {data} = await axios.get("https://api.spotify.com/v1/search", {
+          headers: {
+              Authorization: `Bearer ${token}`
+          },
+          params: {
+              q: searchKey,
+              type: "artist"
+          }
+      })
+  
+      setArtists(data.artists.items)
+  }
+  
   return (
     <div className="App">
         {/* <Header/> */}

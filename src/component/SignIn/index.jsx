@@ -31,6 +31,9 @@ const SingIn = ({ clientGoogleId }) => {
         console.log('====================================');
       }
       
+      const [searchKey, setSearchKey] = useState("")
+      const [artists, setArtists] = useState([])
+
   return (
     <div className=''>
         <h3>Login</h3>
