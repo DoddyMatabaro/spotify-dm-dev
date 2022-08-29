@@ -16,7 +16,8 @@ function App() {
   const [token, setToken] = useState("")
 
   const [logIn, setLogIn] = useState(false)
-
+  const [artists,setArtists] = useState([]);
+  const [searchKey, setSearchKey] = useState("gims");
     useEffect(() => {
         const hash = window.location.hash
         let token = window.localStorage.getItem("token")
@@ -43,13 +44,25 @@ function App() {
           },
           params: {
               q: searchKey,
-              type: "artist"
+              type: "track,artist,album",
+              limit: "30"
           }
       })
   
       setArtists(data.artists.items)
   }
   
+  
+  const renderArtists = () => {
+    return artists.map(artist => (
+        <div key={artist.id}>
+            {artist.images.length ? <img width={"100%"} src={artist.images[0].url} alt=""/> : <div>No Image</div>}
+            {artist.name}
+        </div>
+    ))
+  }
+
+    console.log(renderArtists().length);
   return (
     <div className="App">
         {/* <Header/> */}
@@ -69,6 +82,14 @@ function App() {
                         to Spotify</a>
                     : <button onClick={logout}>Logout</button>}
             </header>
+            <form onSubmit={searchArtists}>
+                <input type="text" onChange={e => setSearchKey(e.target.value)} />
+                <button type={"submit"}>Search</button>
+            </form>
+            <div>
+              <h3>Resultat</h3>
+              {renderArtists()}
+            </div>
         </div>
     </div>
   )
