@@ -9,13 +9,18 @@ import axios from 'axios';
 
 function App() {
  
+  const [loading, setLoading] = useState(false);
   const [token, setToken] = useState("")
-
   const [logIn, setLogIn] = useState(false)
   const [artists,setArtists] = useState([]);
   const [searchKey, setSearchKey] = useState("");
      
   useEffect(() => {
+       setLoading(true);
+       setTimeout(() => {
+        setLoading(false);
+      }, 2000000);
+
         const hash = window.location.hash
         let token = window.localStorage.getItem("token")
 
@@ -26,19 +31,23 @@ function App() {
             window.localStorage.setItem("token", token)
         }
         setToken(token)
+        
     }, [])
 
-    
+
   return (
     <div className="App">
-        <Header setArtists={setArtists} searchKey={searchKey} token={token} setToken={setToken} setSearchKey={setSearchKey}/>
-             { !token ? 
-                  <SingIn  clientGoogleId={clientGoogleId} /> 
+        {loading ? (
+        <div className="loader-container">
+      	  <div className="spinner"></div>
+        </div>
+      ) : (
+        <Header setArtists={setArtists} searchKey={searchKey} token={token} setToken={setToken} setSearchKey={setSearchKey}/>,
+              ((!token) ? 
+                  (<SingIn  clientGoogleId={clientGoogleId} />) 
                  :
-                  <Profile artists={artists} />
-             }
- 
-        <Footer />
+                  (<Profile artists={artists} token={token} />)),     
+        <Footer />)}  
 
         {/* <div className="App">
             

@@ -3,9 +3,19 @@
     height: 3rem;
     border-radius: 3px;
 }
+thead{
+    border: 2px solid white;   
+}
 tr{
-    border-bottom: 1px solid white;
-    
+    border: 2px solid white;   
+}
+.track-title{
+    display: flex;
+    flex: row;
+    gap: 1rem;
+    /* justify-content: center; */
+    align-items: center;
+    margin: 3px;
 }
 .track-title small{
     display: none;
