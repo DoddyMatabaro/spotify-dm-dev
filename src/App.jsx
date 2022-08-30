@@ -44,7 +44,7 @@ function App() {
         <Header token={token} setToken={setToken}/>
              { !token ? 
                   <SingIn  clientGoogleId={clientGoogleId} /> 
-                :
+                 :
                   <Profile />
              }
  

@@ -20,10 +20,12 @@ const Profile = () => {
                     <article>Southem Rock</article>
                     <article>Southem Rock</article>
                 </div>
+
                 <div className='profile-buttons'>
                         <div className="btn btn-primary">Play</div>
                         <div className="btn btn-secondary">Follow</div> 
                 </div>
+                
                 <ul className='sort-links'>
                     <li ><a href='#'>General</a></li>
                     <li ><a href='#'>Tracks</a></li>
