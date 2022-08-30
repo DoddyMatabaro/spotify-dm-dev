@@ -3,7 +3,25 @@ import './result.css'
 import profile from '../../assets/profile.jpg'
 import { FaPlay } from 'react-icons/fa'
 
-const Result = () => {
+const Result = ({artists}) => {
+    
+    const renderArtists = () => {
+        return artists.map((track, index) => (
+            <tr key={track.id}>
+                    <td>{index}</td>
+                    <td className="track-title">
+                    {track.album.images.length ? <img className='track-img' src={track.album.images[0].url} alt="Track" />: <div>No Image</div>}
+                        <div>
+                            <b>{track.name}</b>
+                            <small>{track.album.name}</small>
+                        </div>
+                    </td>
+                    <td className="album">{track.album.name}</td>
+                    <td>type</td>
+                    <td><FaPlay /></td>
+            </tr>
+        ))
+      }
   return (
     <div className='tracks'>
         <h2>Top tracks</h2>
@@ -13,25 +31,12 @@ const Result = () => {
                     <th>#</th>
                     <th>Title</th>
                     <th className="album">Album</th>
-                    <th>Type</th>
+                    <th>Time</th>
                     <th>-</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td className="track-title">
-                        <img className='track-img' src={profile} alt="Track" />
-                        <div>
-                            <b>Ex On Fire</b>
-                            <small>Only by the Night</small>
-                        </div>
-                    </td>
-                    <td className="album">Only by the Night</td>
-                    <td>type</td>
-                    <td><FaPlay /></td>
-                </tr>
-                
+                 {renderArtists()}
             </tbody>
 
         </table>

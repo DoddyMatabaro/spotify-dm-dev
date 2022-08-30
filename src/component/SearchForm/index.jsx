@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaSearch } from 'react-icons/fa';
-
-function SearchForm({token, setArtists, setSearchKey}) {
+import axios from 'axios';
+function SearchForm({token, setArtists, setSearchKey, searchKey}) {
     const searchArtists = async (e) => {
         e.preventDefault()
         const {data} = await axios.get("https://api.spotify.com/v1/search", {
@@ -10,10 +10,10 @@ function SearchForm({token, setArtists, setSearchKey}) {
             },
             params: {
                 q: searchKey,
-                type: "track,artist,album"
+                type: "track"
             }
         })
-        setArtists(data.artists.items)
+        setArtists(data.tracks.items)
     }
   return (
     <form onSubmit={searchArtists}>

@@ -3,10 +3,12 @@ import profile from '../../assets/profile.jpg'
 import Result from '../Result';
 import './profile.css';
 
-const Profile = () => {
+const Profile = ({artists}) => {
+
+  console.log(artists);
   return (
     <div className='profile'>
-            <div className="artist">
+            {/* <div className="artist">
                 <img src={profile} className="artist-profile" alt="Profile" />
                 <div className="artist-details">
                     <small className='details-title'>Artist</small>
@@ -34,8 +36,8 @@ const Profile = () => {
                 </ul>
                 <hr/>
               
-            </div>
-            <Result />
+            </div> */}
+            <Result artists={artists} />
     </div>
   )
 }

@@ -14,17 +14,6 @@ function App() {
   const [logIn, setLogIn] = useState(false)
   const [artists,setArtists] = useState([]);
   const [searchKey, setSearchKey] = useState("");
-
-
-  
-  const renderArtists = () => {
-    return artists.map(artist => (
-        <div key={artist.id}>
-            {artist.images.length ? <img width={"100%"} src={artist.images[0].url} alt=""/> : <div>No Image</div>}
-            {artist.name}
-        </div>
-    ))
-  }
      
   useEffect(() => {
         const hash = window.location.hash
@@ -39,13 +28,14 @@ function App() {
         setToken(token)
     }, [])
 
+    
   return (
     <div className="App">
-        <Header token={token} setToken={setToken}/>
+        <Header setArtists={setArtists} searchKey={searchKey} token={token} setToken={setToken} setSearchKey={setSearchKey}/>
              { !token ? 
                   <SingIn  clientGoogleId={clientGoogleId} /> 
                  :
-                  <Profile />
+                  <Profile artists={artists} />
              }
  
         <Footer />
