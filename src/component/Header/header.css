@@ -3,9 +3,70 @@ header{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-top: 0;
+    padding: 10px;
 }
 
+.sidebar-toggle {
+    position: fixed;
+    /* top: 2rem;
+    left: 3rem; */
+    font-size: 2rem;
+    background: transparent;
+    border-color: transparent;
+    color: var(--clr-font);
+    transition: var(--transition);
+    cursor: pointer;
+    animation: bounce 2s ease-in-out infinite;
+  }
+  @keyframes bounce {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
 img{
     width: 100px;
     height: 40px;
+}
+.menu-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: spa;
+    align-items: center;
+}
+.user-profile{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.user-profile-image{
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}
+
+.user-profile .user-profile-status{
+    color: var(--clr-bcg);
+    position: absolute;
+    z-index: 1;
+    display: none;
+    background-color: var(--clr-font);
+    margin-left: -100px;
+}
+.user-profile-status h6{
+    border-bottom: 1px dotted;
+    text-align: center;
+}
+.user-profile:hover .user-profile-status{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px;
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { FaSearch } from 'react-icons/fa';
 import axios from 'axios';
 function SearchForm({token, setArtists, setSearchKey, searchKey}) {
-    const searchArtists = async (e) => {
+    const searchArtists = async (e, inputValue) => {
         e.preventDefault()
         const {data} = await axios.get("https://api.spotify.com/v1/search", {
             headers: {

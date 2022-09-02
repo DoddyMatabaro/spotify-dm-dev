@@ -1,0 +1,310 @@
+// <div className="App">
+      //   {loading ? (
+      //   <div className="loader-container">
+      // 	  <div className="spinner"></div>
+      //   </div>
+      // ) : (
+      //   <Header setArtists={setArtists} searchKey={searchKey} token={token} setToken={setToken} setSearchKey={setSearchKey}/>.props,
+      //         ((!token) ? 
+      //             (<SingIn  clientGoogleId={clientGoogleId} />) 
+      //            :
+      //             (<Profile artists={artists} token={token} />)),     
+      //   <Footer />
+        
+      //   )}  
+/* </div> */
+
+curl -X "GET" 
+"https://api.spotify.com/v1/search?q=Gims&type=track" 
+-H "Accept: application/json" 
+-H "Content-Type: application/json" 
+-H "Authorization: Bearer BQBMdXcpJyPvpT5vv2W4FYRCtNNM8XXkrqbwTWXhi849TmEEzoy-wjY7AZ9407Kosp50HN0dpKsL5fRv1_3SCq5zJKgl8vLKp3WdUhs9OS_WaS0i2ABBwbosDOF3l6Lypk5WkU6r4Z4NjvUsWRaaf99_KEAQF3y0VQ2liy3NoI0FgKc2KEJ5xzrM3ddmDWNbpqQ"
+
+{
+      "tracks": {
+        "href": "https://api.spotify.com/v1/search?query=Gims&type=track&locale=en-US%2Cen%3Bq%3D0.5&offset=0&limit=20",
+        "items": [
+          {
+            "album": {
+              "album_type": "single",
+              "artists": [
+                {
+                  "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/1i8SpTcr7yvPOmcqrbnVXY"
+                  },
+                  "href": "https://api.spotify.com/v1/artists/1i8SpTcr7yvPOmcqrbnVXY",
+                  "id": "1i8SpTcr7yvPOmcqrbnVXY",
+                  "name": "Ozuna",
+                  "type": "artist",
+                  "uri": "spotify:artist:1i8SpTcr7yvPOmcqrbnVXY"
+                },
+                {
+                  "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/0GOx72r5AAEKRGQFn3xqXK"
+                  },
+                  "href": "https://api.spotify.com/v1/artists/0GOx72r5AAEKRGQFn3xqXK",
+                  "id": "0GOx72r5AAEKRGQFn3xqXK",
+                  "name": "GIMS",
+                  "type": "artist",
+                  "uri": "spotify:artist:0GOx72r5AAEKRGQFn3xqXK"
+                },
+                {
+                  "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/6O9WquDfQTxGRZqZUXVEQx"
+                  },
+                  "href": "https://api.spotify.com/v1/artists/6O9WquDfQTxGRZqZUXVEQx",
+                  "id": "6O9WquDfQTxGRZqZUXVEQx",
+                  "name": "RedOne",
+                  "type": "artist",
+                  "uri": "spotify:artist:6O9WquDfQTxGRZqZUXVEQx"
+                }
+              ],
+              "available_markets": [
+                "AD",
+                "AE",
+                "AG",
+                "AL",
+                "AM",
+                "AO",
+                "AR",
+                "AT",
+                "AU",
+                "AZ",
+                "BA",
+                "BB",
+                "BD",
+                "BE",
+                "BF",
+                "BG",
+                "BH",
+                "BI",
+                "BJ",
+                "BN",
+                "BO",
+                "BR",
+                "BS",
+                "BT",
+                "BW",
+                "BY",
+                "BZ",
+                "CA",
+                "CD",
+                "CG",
+                "CH",
+                "CI",
+                "CL",
+                "CM",
+                "CO",
+                "CR",
+                "CV",
+                "CW",
+                "CY",
+                "CZ",
+                "DE",
+                "DJ",
+                "DK",
+                "DM",
+                "DO",
+                "DZ",
+                "EC",
+                "EE",
+                "EG",
+                "ES",
+                "FI",
+                "FJ",
+                "FM",
+                "FR",
+                "GA",
+                "GB",
+                "GD",
+                "GE",
+                "GH",
+                "GM",
+                "GN",
+                "GQ",
+                "GR",
+                "GT",
+                "GW",
+                "GY",
+                "HK",
+                "HN",
+                "HR",
+                "HT",
+                "HU",
+                "ID",
+                "IE",
+                "IL",
+                "IN",
+                "IQ",
+                "IS",
+                "IT",
+                "JM",
+                "JO",
+                "JP",
+                "KE",
+                "KG",
+                "KH",
+                "KI",
+                "KM",
+                "KN",
+                "KR",
+                "KW",
+                "KZ",
+                "LA",
+                "LB",
+                "LC",
+                "LI",
+                "LK",
+                "LR",
+                "LS",
+                "LT",
+                "LU",
+                "LV",
+                "LY",
+                "MA",
+                "MC",
+                "MD",
+                "ME",
+                "MG",
+                "MH",
+                "MK",
+                "ML",
+                "MN",
+                "MO",
+                "MR",
+                "MT",
+                "MU",
+                "MV",
+                "MW",
+                "MX",
+                "MY",
+                "MZ",
+                "NA",
+                "NE",
+                "NG",
+                "NI",
+                "NL",
+                "NO",
+                "NP",
+                "NR",
+                "NZ",
+                "OM",
+                "PA",
+                "PE",
+                "PG",
+                "PH",
+                "PK",
+                "PL",
+                "PS",
+                "PT",
+                "PW",
+                "PY",
+                "QA",
+                "RO",
+                "RS",
+                "RW",
+                "SA",
+                "SB",
+                "SC",
+                "SE",
+                "SG",
+                "SI",
+                "SK",
+                "SL",
+                "SM",
+                "SN",
+                "SR",
+                "ST",
+                "SV",
+                "SZ",
+                "TD",
+                "TG",
+                "TH",
+                "TJ",
+                "TL",
+                "TN",
+                "TO",
+                "TR",
+                "TT",
+                "TV",
+                "TW",
+                "TZ",
+                "UA",
+                "UG",
+                "US",
+                "UY",
+                "UZ",
+                "VC",
+                "VE",
+                "VN",
+                "VU",
+                "WS",
+                "XK",
+                "ZA",
+                "ZM",
+                "ZW"
+              ],
+              "external_urls": {
+                "spotify": "https://open.spotify.com/album/6rjTLZmOHDByOn63ZZomyY"
+              },
+              "href": "https://api.spotify.com/v1/albums/6rjTLZmOHDByOn63ZZomyY",
+              "id": "6rjTLZmOHDByOn63ZZomyY",
+              "images": [
+                {
+                  "height": 640,
+                  "url": "https://i.scdn.co/image/ab67616d0000b273e3c9d586169998da6ffbfe23",
+                  "width": 640
+                },
+                {
+                  "height": 300,
+                  "url": "https://i.scdn.co/image/ab67616d00001e02e3c9d586169998da6ffbfe23",
+                  "width": 300
+                },
+                {
+                  "height": 64,
+                  "url": "https://i.scdn.co/image/ab67616d00004851e3c9d586169998da6ffbfe23",
+                  "width": 64
+                }
+              ],
+              "name": "Arhbo [Music from the FIFA World Cup Qatar 2022 Official Soundtrack]",
+              "release_date": "2022-08-26",
+              "release_date_precision": "day",
+              "total_tracks": 1,
+              "type": "album",
+              "uri": "spotify:album:6rjTLZmOHDByOn63ZZomyY"
+            },
+            "artists": [
+              {
+                "external_urls": {
+                  "spotify": "https://open.spotify.com/artist/1i8SpTcr7yvPOmcqrbnVXY"
+                },
+                "href": "https://api.spotify.com/v1/artists/1i8SpTcr7yvPOmcqrbnVXY",
+                "id": "1i8SpTcr7yvPOmcqrbnVXY",
+                "name": "Ozuna",
+                "type": "artist",
+                "uri": "spotify:artist:1i8SpTcr7yvPOmcqrbnVXY"
+              },
+              {
+                "external_urls": {
+                  "spotify": "https://open.spotify.com/artist/0GOx72r5AAEKRGQFn3xqXK"
+                },
+                "href": "https://api.spotify.com/v1/artists/0GOx72r5AAEKRGQFn3xqXK",
+                "id": "0GOx72r5AAEKRGQFn3xqXK",
+                "name": "GIMS",
+                "type": "artist",
+                "uri": "spotify:artist:0GOx72r5AAEKRGQFn3xqXK"
+              },
+              {
+                "external_urls": {
+                  "spotify": "https://open.spotify.com/artist/6O9WquDfQTxGRZqZUXVEQx"
+                },
+                "href": "https://api.spotify.com/v1/artists/6O9WquDfQTxGRZqZUXVEQx",
+                "id": "6O9WquDfQTxGRZqZUXVEQx",
+                "name": "RedOne",
+                "type": "artist",
+                "uri": "spotify:artist:6O9WquDfQTxGRZqZUXVEQx"
+              },
+              {
+                "external_urls": {
+                  "spotify": "https://open.spotify.com/artist/5C01hDqpEmrmDfUhX9YWsH"
+                },

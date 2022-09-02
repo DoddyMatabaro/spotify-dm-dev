@@ -6,8 +6,8 @@ import { gapi } from 'gapi-script';
 
 
 const SingIn = ({ clientGoogleId }) => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    // const [email, setEmail] = useState("");
+    // const [password, setPassword] = useState("");
     const CLIENT_ID = "9b707ef30ad74876b0ebded1d118b9ce"
     const REDIRECT_URI = "http://localhost:5174/callback/"
     const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
@@ -23,24 +23,19 @@ const SingIn = ({ clientGoogleId }) => {
        gapi.load('client:auth2', initClient);
       });
   
-      const onSuccess=()=>{
-        console.log('====================================');
-        console.log('success:', res);
-        console.log('====================================');
-      }
+      // const onSuccess=()=>{
+      //   console.log('====================================');
+      //   console.log('success:', res);
+      //   console.log('====================================');
+      // }
   
-      const onFailure=()=>{
-        console.log('====================================');
-        console.log('Failed:', err);
-        console.log('====================================');
-      }
-      
-      const [searchKey, setSearchKey] = useState("")
-      const [artists, setArtists] = useState([])
-
+      // const onFailure=()=>{
+      //   console.log('====================================');
+      //   console.log('Failed:', err);
+      //   console.log('====================================');
+      // }
   return (
     <div className=''>
-        <h3>Login</h3>
         <div className='sign-in-content'>
               <article>
                   {/* <div className='sign-in-input'>

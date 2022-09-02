@@ -5,59 +5,47 @@ import Footer from './component/Footer';
 import Header from './component/Header';
 import Profile from './component/Profile';
 import axios from 'axios';
-;import SingIn from './component/SignIn';
+import SingIn from './component/SignIn';
+import Home from './pages/Home';
+import Sidebar from './component/SideBar';
+import { useGlobalContext } from './context';
 
 function App() {
- 
+  const { token,user,setUser,setToken,spotifyApi, getTokenFromUrl } = useGlobalContext();
   const [loading, setLoading] = useState(false);
-  const [token, setToken] = useState("")
+  // const [token, setToken] = useState("")
   const [logIn, setLogIn] = useState(false)
-  const [artists,setArtists] = useState([]);
-  const [searchKey, setSearchKey] = useState("");
+  // const [searchResult,setSearchResult] = useState([]);
+  // const [searchKey, setSearchKey] = useState("");
      
-  useEffect(() => {
-       setLoading(true);
-       setTimeout(() => {
-        setLoading(false);
-      }, 2000000);
+  // useEffect(() => {
+  //      setLoading(true);
+  //      setTimeout(() => {
+  //       setLoading(false);
+  //     }, 2000)        
+  //   }, [])
 
-        const hash = window.location.hash
-        let token = window.localStorage.getItem("token")
-
-        if (!token && hash) {
-            token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
-
-            window.location.hash = ""
-            window.localStorage.setItem("token", token)
-        }
-        setToken(token)
-        
-    }, [])
-
-
+  useEffect(()=>{
+    const _token = getTokenFromUrl().access_token;
+    window.location.hash = ""
+    console.log("token : ", _token);
+    if(_token){
+      setToken(_token);
+      spotifyApi.setAccessToken(_token)
+      spotifyApi.getMe().then((user)=>{
+        setUser(user);
+        console.log("user : ", user)
+      });
+    }
+  })
+  console.log("test : ",token);
   return (
-    <div className="App">
-        {loading ? (
-        <div className="loader-container">
-      	  <div className="spinner"></div>
-        </div>
-      ) : (
-        <Header setArtists={setArtists} searchKey={searchKey} token={token} setToken={setToken} setSearchKey={setSearchKey}/>,
-              ((!token) ? 
-                  (<SingIn  clientGoogleId={clientGoogleId} />) 
-                 :
-                  (<Profile artists={artists} token={token} />)),     
-        <Footer />)}  
-
-        {/* <div className="App">
-            
-            <div>
-              <h3>Resultat</h3>
-              {renderArtists()}
-            </div>
-        </div> */}
-    </div>
+    <>
+      <Home/>
+      <Sidebar/>
+    </>
   )
+  
 }
 
 export default App

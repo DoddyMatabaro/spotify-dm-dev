@@ -1,8 +1,4 @@
 
-h3{
-        text-align: center;
-}
-
 @media screen and (max-width: 768px) {
     .sign-in-content{
         display: flex;
@@ -10,15 +6,13 @@ h3{
         gap: 2rem;
         background-color: rgb(48, 47, 47);
         padding: 2rem;
-        /* width: 10%; */
-        border-radius: 13px;
+        width: 60%;
     }
     .sign-in-content article{
         display: flex;
         flex-direction: column;
         gap: 1.3rem;
         justify-content: center;
-        /* align-items: center; */
     }
     .sign-in-content article .sign-in-input{
         display: flex;
