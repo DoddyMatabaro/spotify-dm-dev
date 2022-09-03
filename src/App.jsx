@@ -43,6 +43,7 @@ function App() {
     <>
       <Home/>
       <Sidebar/>
+      <Profile/>
     </>
   )
   

@@ -1,6 +1,6 @@
 import React, { useState, useContext} from 'react'
 import SpotifyWebApi from 'spotify-web-api-js';
-
+import {data} from './data'
 const AppContext = React.createContext();
 
 
@@ -48,7 +48,7 @@ function AppProvider({ children }) {
               // window.localStorage.setItem("token", token)
       } 
         
-  function getPlayList(){
+  function getPlaylist(){
     // spotifyApi.getMyCurrentPlaybackState()
     //   .then((response) => {
     //     setNowPlaying({
@@ -76,24 +76,22 @@ function AppProvider({ children }) {
         );
       }
     const spotifyApi = new SpotifyWebApi();
+    const [people, setPeople] = useState(data);
+    const [index, setIndex] = React.useState(0);
+  
     return (
         <AppContext.Provider 
             value={{ 
-                isSidebarOpen,
-                openSidebar,
-                user,
-                setUser,
-                closeSidebar,
-                toggleTheme,
-                token,
-                setToken,
-                theme,
-                search,
-                setSearch,
+                isSidebarOpen,openSidebar,
+                user, setUser,
+                people, setPeople,
+                index, setIndex,
+                closeSidebar,toggleTheme,
+                token,setToken, theme,
+                search,setSearch,
                 getTokenFromUrl,
                 spotifyApi,
-                getPlayList,
-                playlist
+                getPlaylist, playlist
             }}
         >
                 {children}
