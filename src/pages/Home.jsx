@@ -1,7 +1,7 @@
 import React,{ useState } from 'react';
 import Header from '../component/Header';
 import SingIn from '../component/SignIn';
-import { useGlobalContext } from '../context';
+import { useGlobalContext } from '../utils/context';
 
 
 const Home = ( ) => {

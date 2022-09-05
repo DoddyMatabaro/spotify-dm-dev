@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import './sidebar.css'
-import { useGlobalContext } from '../../context';
+import { useGlobalContext } from '../../utils/context';
 import { FaTimes } from 'react-icons/fa';
 import { social, links, logo } from '../../data';
 

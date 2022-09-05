@@ -8,7 +8,7 @@ import axios from 'axios';
 import SingIn from './component/SignIn';
 import Home from './pages/Home';
 import Sidebar from './component/SideBar';
-import { useGlobalContext } from './context';
+import { useGlobalContext } from './utils/context';
 import SpotifyPlayer from 'react-spotify-web-playback';
 
 

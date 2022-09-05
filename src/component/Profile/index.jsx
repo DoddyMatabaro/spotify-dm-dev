@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react';
 import profile from '../../assets/profile.jpg'
 import Result from '../Result';
 import './profile.css';
-import { useGlobalContext } from '../../context';
+import { useGlobalContext } from '../../utils/context';
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 import { FaQuoteRight, FaPlay,  } from 'react-icons/fa';
 

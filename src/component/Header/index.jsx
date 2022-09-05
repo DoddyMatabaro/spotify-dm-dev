@@ -1,7 +1,7 @@
 import React,{ useEffect, useState} from 'react'
 import SearchForm from '../SearchForm'
 import './header.css'
-import { useGlobalContext } from '../../context';
+import { useGlobalContext } from '../../utils/context';
 import {MdLightMode,MdOutlineLightMode} from 'react-icons/md'
 import { FaBars } from 'react-icons/fa';
 import { AsyncPaginate } from 'react-select-async-paginate';
