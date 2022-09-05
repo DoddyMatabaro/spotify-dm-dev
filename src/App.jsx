@@ -9,15 +9,14 @@ import SingIn from './component/SignIn';
 import Home from './pages/Home';
 import Sidebar from './component/SideBar';
 import { useGlobalContext } from './context';
+import SpotifyPlayer from 'react-spotify-web-playback';
+
 
 function App() {
   const { token,user,setUser,setToken,spotifyApi, getTokenFromUrl } = useGlobalContext();
   const [loading, setLoading] = useState(false);
-  // const [token, setToken] = useState("")
   const [logIn, setLogIn] = useState(false)
-  // const [searchResult,setSearchResult] = useState([]);
-  // const [searchKey, setSearchKey] = useState("");
-     
+
   // useEffect(() => {
   //      setLoading(true);
   //      setTimeout(() => {
@@ -25,25 +24,17 @@ function App() {
   //     }, 2000)        
   //   }, [])
 
-  useEffect(()=>{
-    const _token = getTokenFromUrl().access_token;
-    window.location.hash = ""
-    console.log("token : ", _token);
-    if(_token){
-      setToken(_token);
-      spotifyApi.setAccessToken(_token)
-      spotifyApi.getMe().then((user)=>{
-        setUser(user);
-        console.log("user : ", user)
-      });
-    }
-  })
+
   console.log("test : ",token);
   return (
     <>
       <Home/>
       <Sidebar/>
-      <Profile/>
+      {/* <Profile/> */}
+      {/* <SpotifyPlayer
+          token={token}
+          uris={['spotify:artist:6HQYnRM4OzToCYPpVBInuU']}
+      /> */}
     </>
   )
   

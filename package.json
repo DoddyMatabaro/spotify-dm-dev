@@ -16,6 +16,8 @@
     "react-icons": "^4.4.0",
     "react-select": "^5.4.0",
     "react-select-async-paginate": "^0.6.2",
+    "react-spotify-embed": "^0.2.3",
+    "react-spotify-web-playback": "^0.10.0",
     "spotify-web-api-js": "^1.5.2"
   },
   "devDependencies": {

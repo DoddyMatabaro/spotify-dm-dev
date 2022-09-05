@@ -4,7 +4,7 @@ import Result from '../Result';
 import './profile.css';
 import { useGlobalContext } from '../../context';
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
-import { FaQuoteRight } from 'react-icons/fa';
+import { FaQuoteRight, FaPlay,  } from 'react-icons/fa';
 
 
 const Profile = ({artists, token}) => { 
@@ -57,7 +57,11 @@ const Profile = ({artists, token}) => {
                 <h4>{name}</h4>
                 <p className="title">{title}</p>
                 <p className="text">{quote}</p>
-                <FaQuoteRight className="icon" />
+                {/* <FaQuoteRight className="icon" /> */}
+                <div className='profile-buttons icon'>
+                        <div className="btn btn-primary"><FaPlay /> Play</div>
+                        <div className="btn btn-secondary">Follow</div> 
+                </div>
               </article>
             );
           })}

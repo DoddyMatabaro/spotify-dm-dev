@@ -1,4 +1,5 @@
 
+
 @media screen and (max-width: 768px) {
     .sign-in-content{
         display: flex;
@@ -6,25 +7,22 @@
         gap: 2rem;
         background-color: rgb(48, 47, 47);
         padding: 2rem;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .sign-in-content div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5rem;
+        justify-content: center;
+    }
+    .sign-in-content  img{
+        height: 30vh;
         width: 60%;
     }
-    .sign-in-content article{
-        display: flex;
-        flex-direction: column;
-        gap: 1.3rem;
-        justify-content: center;
-    }
-    .sign-in-content article .sign-in-input{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: left;
-        gap: 0.5rem;
-    }
-    .sign-in-content article .sign-in-input label{
-        font-weight: 500;
-    }
-    .sign-in-content article .sign-in-input input{
+    /* .sign-in-content article .sign-in-input input{
         padding: 15px;
         border: none;
         border-radius: 7px;
@@ -44,7 +42,7 @@
     }
     .sign-in-content article p a{
         color: white;
-    }
+    } */
     .google-login{
         border: none;
         border-radius: 20px;
