@@ -1,4 +1,6 @@
 export const reducerCases = {
+    OPEN_SIDE_BAR: "OPEN_SIDE_BAR",
+    TOGGLE_THEME: "TOOGLE_THEME",
     SET_TOKEN: "SET_TOKEN",
     SET_USER: "SET_USER",
     SET_PLAYLISTS: "SET_PLAYLISTS",

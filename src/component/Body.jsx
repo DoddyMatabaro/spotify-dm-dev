@@ -2,10 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { reducerCases } from "../utils/Constants";
 import { useGlobalContext } from "../utils/context";
-import Result from "./Result";
+import SideBar from "./SideBar";
+import Header from "./Header";
 
 const Body = () => {
   const [{ token }, dispatch] = useGlobalContext();
+
     useEffect(() => {
         const getUserInfo = async () => {
         const { data } = await axios.get("https://api.spotify.com/v1/me", {
@@ -42,7 +44,8 @@ const Body = () => {
 
   return (
     <div>
-        <Result />
+        <Header/>
+        <SideBar/>
     </div>
   )
 }

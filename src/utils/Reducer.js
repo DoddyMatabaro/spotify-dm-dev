@@ -1,6 +1,16 @@
 import { reducerCases } from "./Constants";
 
+// // take active in the localStorage
+// const getStorageTheme = () => {
+//     let theme = 'light-theme';
+//     if (localStorage.getItem('theme')) {
+//       theme = localStorage.getItem('theme');
+//     }
+//     return theme;
+//   };
 export const initialState = {
+  theme : localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light-theme',
+  isSidebarOpen : false,
   token: null,
   userInfo: null,
   playlists: [],
@@ -12,6 +22,17 @@ export const initialState = {
 
 const reducer = (state, action) => {
     switch (action.type) {
+       case reducerCases.OPEN_SIDE_BAR:
+        return {
+          ...state,
+          isSidebarOpen: action.value,
+        };
+
+      case reducerCases.TOGGLE_THEME:
+            return {
+              ...state,
+              theme : action.value,
+            };
       case reducerCases.SET_TOKEN:
         return {
           ...state,

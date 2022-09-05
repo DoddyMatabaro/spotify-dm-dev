@@ -5,9 +5,13 @@ import { reducerCases } from "../../utils/Constants";
 import './result.css'
 import profile from '../../assets/profile.jpg'
 import { FaPlay, FaStepForward, FaPause, FaStepBackward } from 'react-icons/fa'
+import { useGlobalContext } from '../../utils/context';
 
 const Result = () => {
     const [{ token, selectedPlaylist, selectedPlaylistId }, dispatch] = useGlobalContext();
+    console.log('====================================');
+    console.log(token);
+    console.log('====================================');
     useEffect(() => {
         const getInitialPlaylist = async () => {
           const response = await axios.get(

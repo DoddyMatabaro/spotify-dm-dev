@@ -29,12 +29,10 @@ function App() {
   //     }, 2000)        
   //   }, [])
 
-
-  // console.log("test : ",token);
   return (
-    <>
-         {token ?   <SingIn /> : <Body/> }    
-    </>
+    <div className="App">
+         { !token ?   <SingIn /> : <Body/> }    
+    </div>
   )
   
 }

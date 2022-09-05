@@ -22,7 +22,7 @@
     height: 50px;
   }
   
-  .links a {
+  .links .link {
     display: flex;
     align-items: center;
     font-size: 1.25rem;
@@ -33,17 +33,17 @@
     letter-spacing: var(--spacing);
   }
   
-  .links a:hover {
+  .links .link:hover {
     background: var(--clr-font);
     color: var(--clr-primary);
   }
-  .links a svg {
+  .links .link svg {
     font-size: 1.5rem;
     color: var(--clr-grey-5);
     margin-right: 1rem;
     transition: var(--transition);
   }
-  .links a:hover svg {
+  .links .link:hover svg {
     color: var(--clr-grey-4);
   }
   .social-icons {
@@ -62,7 +62,7 @@
   }
   
   .sidebar {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;

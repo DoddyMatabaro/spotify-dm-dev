@@ -6,25 +6,24 @@ import {MdLightMode,MdOutlineLightMode} from 'react-icons/md'
 import { FaBars } from 'react-icons/fa';
 import { AsyncPaginate } from 'react-select-async-paginate';
 import profile from '../../assets/profile.jpg'
+import { reducerCases } from "../../utils/Constants";
 
 
-const Header = ({token, user, setToken, setSearchKey, setArtists, searchKey}) => {
-  const { theme,toggleTheme,openSidebar, search, setSearch, urlSpotify, searchType, seSearchType  }  = useGlobalContext()
-      // theme
+const Header = () => {
+  const [ {theme,toggleTheme,isSidebarOpen, userInfo}, dispatch]    = useGlobalContext()
       useEffect(() => {
         document.documentElement.className = theme;
         localStorage.setItem('theme', theme);
       }, [theme]);
-          
-  const logout = () => {
-        setToken("")
-        window.localStorage.removeItem("token")
-  }
-
+       
   return (
     <header>
         <div>
-          <button onClick={openSidebar} className='sidebar-toggle'>
+          <button onClick={()=>{
+            let value = true;
+            dispatch({ type: reducerCases.OPEN_SIDE_BAR, value } );
+          }
+          } className='sidebar-toggle'>
             <FaBars />
           </button>
         </div>
@@ -35,19 +34,23 @@ const Header = ({token, user, setToken, setSearchKey, setArtists, searchKey}) =>
             onChange={handleOnChange}
             loadOptions={loadOptions}
         /> */}
-        {/* <SearchForm searchKey={searchKey} token={token}  setArtists={setArtists} setSearchKey={setSearchKey} /> */}
         <nav className="menu-container">
                 <div className="user-profile">
+                  <a href={userInfo?.userUrl}>
                     <img className="user-profile-image" src={profile} alt="profile" /> 
+                  </a>
                     <div className='user-profile-status'>
                         <h6>Profile Spotify</h6>
-                        <small>Doddy Matabaro</small>
+                        <small>{userInfo?.name}</small>
                         <small>User Free</small>
                     </div>
                 </div>
-                {/* {token ?<button onClick={logout}>Logout</button> : null} */}
                 <div className="nav-center">
-                    <div className="btn" onClick={toggleTheme}>
+                    <div className="btn btn-theme" onClick={()=>{
+                        let value = theme==='dark-theme' ? 'light-theme' : 'dark-theme'
+                        dispatch({ type: reducerCases.TOGGLE_THEME, value} );
+                      
+                    }}>
                       {theme==="light-theme"? <MdOutlineLightMode/> : <MdLightMode/> }
                     </div>
                 </div>
