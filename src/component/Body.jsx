@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import { reducerCases } from "../../utils/Constants";
+import { reducerCases } from "../utils/Constants";
 import { useGlobalContext } from "../utils/context";
+import Result from "./Result";
 
 const Body = () => {
   const [{ token }, dispatch] = useGlobalContext();
@@ -38,10 +39,10 @@ const Body = () => {
         };
         getPlaybackState();
     }, [dispatch, token]);
-    
+
   return (
     <div>
-
+        <Result />
     </div>
   )
 }

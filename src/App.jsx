@@ -1,21 +1,26 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import { clientGoogleId } from './assets/api';
-import Footer from './component/Footer';
-import Header from './component/Header';
-import Profile from './component/Profile';
-import axios from 'axios';
 import SingIn from './component/SignIn';
-import Home from './pages/Home';
-import Sidebar from './component/SideBar';
 import { useGlobalContext } from './utils/context';
-import SpotifyPlayer from 'react-spotify-web-playback';
-
+import { reducerCases } from "./utils/Constants";
+import Body from './component/Body';
 
 function App() {
-  const { token,user,setUser,setToken,spotifyApi, getTokenFromUrl } = useGlobalContext();
+  const [{ token }, dispatch]  = useGlobalContext();
+  
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const token = hash.substring(1).split("&")[0].split("=")[1];
+      if (token) {
+        dispatch({ type: reducerCases.SET_TOKEN, token });
+      }
+    }
+    document.title = "Spotify";
+  }, [dispatch, token]);
+
   const [loading, setLoading] = useState(false);
-  const [logIn, setLogIn] = useState(false)
 
   // useEffect(() => {
   //      setLoading(true);
@@ -25,16 +30,10 @@ function App() {
   //   }, [])
 
 
-  console.log("test : ",token);
+  // console.log("test : ",token);
   return (
     <>
-      <Home/>
-      <Sidebar/>
-      {/* <Profile/> */}
-      {/* <SpotifyPlayer
-          token={token}
-          uris={['spotify:artist:6HQYnRM4OzToCYPpVBInuU']}
-      /> */}
+         {token ?   <SingIn /> : <Body/> }    
     </>
   )
   

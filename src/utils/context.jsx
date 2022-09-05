@@ -29,23 +29,6 @@ export function AppProvider({ initialState, reducer, children }) {
           setTheme('light-theme');
         }
       };
-      const [user, setUser] = useState({});
-      // const getTokenFromUrl = ()=>{
-      //     // let token = window.localStorage.getItem("token")
-      //       return  window.location.hash
-      //               .substring(1)
-      //               .split("&")
-      //               .reduce((initial, item)=>{
-      //                 let parts = item.split("=");
-      //                 initial[parts[0]] = decodeURIComponent(parts[1])
-                      
-      //                 return initial
-      //               }, {});
-      //               // find(elem => elem.startsWith("access_token")).split("=")[1]
-      //         // window.localStorage.setItem("token", token)
-      // } 
-        
-
     const [people, setPeople] = useState(data);
     const [index, setIndex] = React.useState(0);
   
@@ -68,4 +51,4 @@ export const useGlobalContext = ()=>{
     return useContext(AppContext);
 }
 
-// export { AppContext } 
+export { AppContext } 
