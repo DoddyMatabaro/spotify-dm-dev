@@ -1,88 +1,127 @@
-import React, { useState, useEffect} from 'react'
+import React, {useEffect} from 'react'
+import axios from "axios";
+import { reducerCases } from "../../utils/Constants";
+
 import './result.css'
 import profile from '../../assets/profile.jpg'
 import { FaPlay, FaStepForward, FaPause, FaStepBackward } from 'react-icons/fa'
 
-const Result = ({artists, token}) => {
-    const [is_paused, setPaused] = useState(false);
-    const [is_active, setActive] = useState(false);
-    const track = {
-      name: "",
-      album: {
-          images: [
-              { url: "" }
-          ]
-      },
-      artists: [
-          { name: "" }
-      ]
-  }
-    function takeTrack(selectedTrack){
-        useState();
-    }
-    const [current_track, setTrack] = useState(track);
-    console.log(current_track);
-    const [player, setPlayer] = useState(undefined);
-  
-      console.log(artists);
-  
-      useEffect(() => {
-        const script = document.createElement("script");
-        script.src = "https://sdk.scdn.co/spotify-player.js";
-        script.async = true;
-  
-        document.body.appendChild(script);
-  
-        window.onSpotifyWebPlaybackSDKReady = () => {
-  
-            const player = new window.Spotify.Player({
-                name: 'Web Playback SDK',
-                getOAuthToken: cb => { cb(token); },
-                volume: 0.5
-            });
-  
-            setPlayer(player);
-  
-            player.addListener('ready', ({ device_id }) => {
-                console.log('Ready with Device ID', device_id);
-            });
-  
-            player.addListener('not_ready', ({ device_id }) => {
-                console.log('Device ID has gone offline', device_id);
-            });
-  
-              player.addListener('player_state_changed', ( state => {
-  
-                    if (!state) {
-                        return;
-                    }
-                
-                    setTrack(state.track_window.current_track);
-                    setPaused(state.paused);
-                    player.getCurrentState().then( state => { 
-                        (!state)? setActive(false) : setActive(true) 
-                    });
-              
-              }));
-            player.connect();
-  
+const Result = () => {
+    const [{ token, selectedPlaylist, selectedPlaylistId }, dispatch] = useGlobalContext();
+    useEffect(() => {
+        const getInitialPlaylist = async () => {
+          const response = await axios.get(
+            `https://api.spotify.com/v1/playlists/${selectedPlaylistId}`,
+            {
+              headers: {
+                Authorization: "Bearer " + token,
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          const selectedPlaylist = {
+            id: response.data.id,
+            name: response.data.name,
+            description: response.data.description.startsWith("<a")
+              ? ""
+              : response.data.description,
+            image: response.data.images[0].url,
+            tracks: response.data.tracks.items.map(({ track }) => ({
+              id: track.id,
+              name: track.name,
+              artists: track.artists.map((artist) => artist.name),
+              image: track.album.images[2].url,
+              duration: track.duration_ms,
+              album: track.album.name,
+              context_uri: track.album.uri,
+              track_number: track.track_number,
+            })),
+          };
+          dispatch({ type: reducerCases.SET_PLAYLIST, selectedPlaylist });
         };
-      }, []);
+        getInitialPlaylist();
+      }, [token, dispatch, selectedPlaylistId]);
+      const playTrack = async (
+        id,
+        name,
+        artists,
+        image,
+        context_uri,
+        track_number
+      ) => {
+        const response = await axios.put(
+          `https://api.spotify.com/v1/me/player/play`,
+          {
+            context_uri,
+            offset: {
+              position: track_number - 1,
+            },
+            position_ms: 0,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + token,
+            },
+          }
+        );
+        if (response.status === 204) {
+          const currentPlaying = {
+            id,
+            name,
+            artists,
+            image,
+          };
+          dispatch({ type: reducerCases.SET_PLAYING, currentPlaying });
+          dispatch({ type: reducerCases.SET_PLAYER_STATE, playerState: true });
+        } else {
+          dispatch({ type: reducerCases.SET_PLAYER_STATE, playerState: true });
+        }
+      };
+      const msToMinutesAndSeconds = (ms) => {
+        var minutes = Math.floor(ms / 60000);
+        var seconds = ((ms % 60000) / 1000).toFixed(0);
+        return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+      };
   
-    const renderArtists = () => {
-        return artists.map((track, index) => (
-            <tr key={track.id} className="main-wrapper">
-                    <td>{index}</td>
+    const renderList = () => {
+        return selectedPlaylist.map((
+            {
+                id,
+                name,
+                artists,
+                image,
+                duration,
+                album,
+                context_uri,
+                track_number,
+          }, 
+            index) => (
+            <tr key={id} className="main-wrapper" onClick={() =>
+                playTrack(
+                  id,
+                  name,
+                  artists,
+                  image,
+                  context_uri,
+                  track_number
+                )
+              }>
+                    <td>{index + 1}</td>
                     <td className="track-title">
-                    {track.album.images.length ? <img className='track-img now-playing__cover' src={track.album.images[0].url} alt="Track" />: <div>No Image</div>}
+                    {image ? <img className='track-img now-playing__cover' src={image} alt="Track" />: <div>No Image</div>}
                         <div className="now-playing__side">
-                            <b className="now-playing__name">{track.name}</b>
-                            <small className="now-playing__artist">{track.album.name}</small>
+                            <b className="now-playing__name">{name}</b>
+                            <small className="now-playing__album">{album}</small>
+                            <small className="now-playing__artist">{artists}</small>
                         </div>
                     </td>
-                    <td className="album">{track.album.name}</td>
-                    <td>type</td>
-                    <td className='btns'>
+                    <td className="artist">{artist}</td>
+                    <td className="album">{album}</td>
+                    <td>
+                        <span>{msToMinutesAndSeconds(duration)}</span>
+                    </td>
+                    {/* <td className='btns'>
                         <FaStepBackward onClick={() => { 
                                 
                                 player.previousTrack() 
@@ -95,7 +134,7 @@ const Result = ({artists, token}) => {
                         }
                         <FaStepForward  onClick={() => { player.nextTrack() }} />
                     
-                    </td>
+                    </td> */}
             </tr>
         ))
       }
@@ -108,12 +147,12 @@ const Result = ({artists, token}) => {
                     <th>#</th>
                     <th>Title</th>
                     <th className="album">Album</th>
+                    <th className='artist'>Artist</th>
                     <th>Time</th>
-                    <th>-</th>
                 </tr>
             </thead>
             <tbody>
-                 {renderArtists()}
+                 {renderList()}
             </tbody>
 
         </table>
