@@ -8,9 +8,7 @@ import { useGlobalContext } from '../../utils/context';
 
 const Result = () => {
     const [{ token, selectedPlaylist, selectedPlaylistId }, dispatch] = useGlobalContext();
-    // console.log(selectedPlaylistId);
     useEffect(() => {
-      console.log("ok");
         const getInitialPlaylist = async () => {
           const response = await axios.get(
             `https://api.spotify.com/v1/playlists/${selectedPlaylistId}`,
@@ -22,7 +20,6 @@ const Result = () => {
             }
 
           );
-          console.log("result : ",response.data);
           const selectedPlaylist = {
             id: response.data.id,
             name: response.data.name,
@@ -130,7 +127,6 @@ const Result = () => {
             </tr>
         ))
       }
-      console.log("Playlist active : ",selectedPlaylist);
   return (
     <div className='tracks'>
         <h2>Tracks</h2>

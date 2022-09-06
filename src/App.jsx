@@ -7,7 +7,7 @@ import { reducerCases } from "./utils/Constants";
 import Body from './component/Body';
 
 function App() {
-  const [{ token }, dispatch]  = useGlobalContext();
+  const [{ token, loading }, dispatch]  = useGlobalContext();
   
   useEffect(() => {
     const hash = window.location.hash;
@@ -20,14 +20,13 @@ function App() {
     document.title = "Spotify";
   }, [dispatch, token]);
 
-  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+        dispatch({ type: reducerCases.SET_LOADING, notLoading: !loading });
+       setTimeout(() => {
+        dispatch({ type: reducerCases.SET_LOADING, notLoading: !loading });
 
-  // useEffect(() => {
-  //      setLoading(true);
-  //      setTimeout(() => {
-  //       setLoading(false);
-  //     }, 2000)        
-  //   }, [])
+      }, 4000)        
+    }, [])
 
   return (
     <div className="App">
