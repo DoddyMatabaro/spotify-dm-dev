@@ -38,7 +38,7 @@ header{
 .menu-container{
     display: flex;
     flex-direction: row;
-    justify-content: spa;
+    justify-content: space-between;
     align-items: center;
 }
 .user-profile{
@@ -62,7 +62,7 @@ header{
     z-index: 1;
     display: none;
     background-color: var(--clr-font);
-    margin-left: -100px;
+    margin-left: -120px;
 }
 .user-profile-status h6{
     border-bottom: 1px dotted;

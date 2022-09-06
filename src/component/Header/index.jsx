@@ -8,7 +8,6 @@ import { AsyncPaginate } from 'react-select-async-paginate';
 import profile from '../../assets/profile.jpg'
 import { reducerCases } from "../../utils/Constants";
 
-
 const Header = () => {
   const [ {theme,toggleTheme,isSidebarOpen, userInfo}, dispatch]    = useGlobalContext()
       useEffect(() => {
@@ -37,12 +36,12 @@ const Header = () => {
         <nav className="menu-container">
                 <div className="user-profile">
                   <a href={userInfo?.userUrl}>
-                    <img className="user-profile-image" src={profile} alt="profile" /> 
+                    <img className="user-profile-image" src={userInfo?.profile} alt="profile" /> 
                   </a>
                     <div className='user-profile-status'>
                         <h6>Profile Spotify</h6>
                         <small>{userInfo?.name}</small>
-                        <small>User Free</small>
+                        <small>{userInfo?.type}</small>
                     </div>
                 </div>
                 <div className="nav-center">
