@@ -128,35 +128,9 @@ const Result = () => {
         ))
       }
   return (
-    <div className='tracks'>
-        <h2>Tracks</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Title</th>
-                    <th className="album">Album</th>
-                    <th className='artist'>Artist</th>
-                    <th>Time</th>
-                </tr>
-            </thead>
-            <tbody>
-                 {selectedPlaylist ? renderList() 
-                    : <tr>
-                        <td>
-                          aucun playlist selectionne
 
-                        </td>
-                    </tr> 
-
-                 }
-            </tbody>
-
-        </table>
-
-        {/* album */}
-
-        <div className='albums-result'>
+    <div className="">
+           <div className='albums-result'>
             <div className='albums-result_header'>
                 <div className='header-left'>
                     <h2>Albums</h2>
@@ -185,8 +159,77 @@ const Result = () => {
                         <small>Kids See Ghost 2018</small>
                     </div>
                 </article>
+                <article className='card'>
+                    <img src={profile} className='card-image' alt='Cover' />
+                    <div className='card-descriptions'>
+                        <p>Sophie Ellis-Boxfor</p>
+                        <small>Kids See Ghost 2018</small>
+                    </div>
+                </article>
+                <article className='card'>
+                    <img src={profile} className='card-image' alt='Cover' />
+                    <div className='card-descriptions'>
+                        <p>Sophie Ellis-Boxfor</p>
+                        <small>Kids See Ghost 2018</small>
+                    </div>
+                </article>
+                <article className='card'>
+                    <img src={profile} className='card-image' alt='Cover' />
+                    <div className='card-descriptions'>
+                        <p>Sophie Ellis-Boxfor</p>
+                        <small>Kids See Ghost 2018</small>
+                    </div>
+                </article>
+                <article className='card'>
+                    <img src={profile} className='card-image' alt='Cover' />
+                    <div className='card-descriptions'>
+                        <p>Sophie Ellis-Boxfor</p>
+                        <small>Kids See Ghost 2018</small>
+                    </div>
+                </article>
+                <article className='card'>
+                    <img src={profile} className='card-image' alt='Cover' />
+                    <div className='card-descriptions'>
+                        <p>Sophie Ellis-Boxfor</p>
+                        <small>Kids See Ghost 2018</small>
+                    </div>
+                </article>
+                <article className='card'>
+                    <img src={profile} className='card-image' alt='Cover' />
+                    <div className='card-descriptions'>
+                        <p>Sophie Ellis-Boxfor</p>
+                        <small>Kids See Ghost 2018</small>
+                    </div>
+                </article>
             </div>
         </div>
+          <div className='tracks'>
+              <h2>Tracks</h2>
+              <table>
+                  <thead>
+                      <tr>
+                          <th>#</th>
+                          <th>Title</th>
+                          <th className="album">Album</th>
+                          <th className='artist'>Artist</th>
+                          <th>Time</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {selectedPlaylist ? renderList() 
+                          : <tr>
+                              <td>
+                                aucun playlist selectionne
+
+                              </td>
+                          </tr> 
+
+                      }
+                  </tbody>
+
+              </table>
+          </div>
+
     </div>
   )
 }
