@@ -9,9 +9,6 @@ import { useGlobalContext } from '../../utils/context';
 
 const Result = () => {
     const [{ token, selectedPlaylist, selectedPlaylistId }, dispatch] = useGlobalContext();
-    console.log('====================================');
-    console.log(token);
-    console.log('====================================');
     useEffect(() => {
         const getInitialPlaylist = async () => {
           const response = await axios.get(
