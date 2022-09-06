@@ -5,6 +5,7 @@ import { useGlobalContext } from "../utils/context";
 import SideBar from "./SideBar";
 import Header from "./Header";
 import Footer from "./Footer"
+import Result from "./Result";
 
 const Body = () => {
   const [{ token }, dispatch] = useGlobalContext();
@@ -52,7 +53,7 @@ const Body = () => {
             <div className="body" >
                     <div className="body__contents">
                         <SideBar/>
-                        Body    
+                        <Result/>   
                     </div>
 
             </div>

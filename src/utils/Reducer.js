@@ -1,23 +1,15 @@
 import { reducerCases } from "./Constants";
-
-// // take active in the localStorage
-// const getStorageTheme = () => {
-//     let theme = 'light-theme';
-//     if (localStorage.getItem('theme')) {
-//       theme = localStorage.getItem('theme');
-//     }
-//     return theme;
-//   };
 export const initialState = {
   theme : localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light-theme',
   isSidebarOpen : false,
   token: null,
   userInfo: null,
+  loading: false, 
   playlists: [],
   currentPlaying: null,
   playerState: false,
   selectedPlaylist: null,
-  selectedPlaylistId: "37i9dQZF1E37jO8SiMT0yN",
+  selectedPlaylistId: "5gRW44T7aQPLJR73SkHogt",
 };
 
 const reducer = (state, action) => {
@@ -27,6 +19,11 @@ const reducer = (state, action) => {
           ...state,
           isSidebarOpen: action.value,
         };
+        case reducerCases.SET_LOADING:
+          return {
+            ...state,
+            loading: action.notLoading,
+          };
 
       case reducerCases.TOGGLE_THEME:
             return {

@@ -31,6 +31,7 @@ function Sidebar() {
     const changeCurrentPlaylist = (selectedPlaylistId) => {
         dispatch({ type: reducerCases.SET_PLAYLIST_ID, selectedPlaylistId });
     };
+    console.log(playlists);
   return (
     <aside className={`${isSidebarOpen ? 'sidebar show-sidebar' : 'sidebar'}`}>
         <div className='sidebar-header'>

@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react'
 import axios from "axios";
 import { reducerCases } from "../../utils/Constants";
-
 import './result.css'
 import profile from '../../assets/profile.jpg'
 import { FaPlay, FaStepForward, FaPause, FaStepBackward } from 'react-icons/fa'
@@ -9,7 +8,9 @@ import { useGlobalContext } from '../../utils/context';
 
 const Result = () => {
     const [{ token, selectedPlaylist, selectedPlaylistId }, dispatch] = useGlobalContext();
+    // console.log(selectedPlaylistId);
     useEffect(() => {
+      console.log("ok");
         const getInitialPlaylist = async () => {
           const response = await axios.get(
             `https://api.spotify.com/v1/playlists/${selectedPlaylistId}`,
@@ -19,14 +20,16 @@ const Result = () => {
                 "Content-Type": "application/json",
               },
             }
+
           );
+          console.log("result : ",response.data);
           const selectedPlaylist = {
             id: response.data.id,
             name: response.data.name,
             description: response.data.description.startsWith("<a")
               ? ""
               : response.data.description,
-            image: response.data.images[0].url,
+            image: response.data.images[0]?.url,
             tracks: response.data.tracks.items.map(({ track }) => ({
               id: track.id,
               name: track.name,
@@ -40,8 +43,10 @@ const Result = () => {
           };
           dispatch({ type: reducerCases.SET_PLAYLIST, selectedPlaylist });
         };
+
         getInitialPlaylist();
       }, [token, dispatch, selectedPlaylistId]);
+
       const playTrack = async (
         id,
         name,
@@ -86,7 +91,7 @@ const Result = () => {
       };
   
     const renderList = () => {
-        return selectedPlaylist.map((
+        return selectedPlaylist.tracks.map((
             {
                 id,
                 name,
@@ -117,31 +122,18 @@ const Result = () => {
                             <small className="now-playing__artist">{artists}</small>
                         </div>
                     </td>
-                    <td className="artist">{artist}</td>
+                    <td className="artist">{artists}</td>
                     <td className="album">{album}</td>
                     <td>
                         <span>{msToMinutesAndSeconds(duration)}</span>
                     </td>
-                    {/* <td className='btns'>
-                        <FaStepBackward onClick={() => { 
-                                
-                                player.previousTrack() 
-                            }}
-                        />
-
-                        {is_paused ? 
-                            <FaPlay onClick={() => { player.togglePlay() }}/>
-                            : <FaPause onClick={() => { player.togglePlay() }}/>
-                        }
-                        <FaStepForward  onClick={() => { player.nextTrack() }} />
-                    
-                    </td> */}
             </tr>
         ))
       }
+      console.log("Playlist active : ",selectedPlaylist);
   return (
     <div className='tracks'>
-        <h2>Top tracks</h2>
+        <h2>Tracks</h2>
         <table>
             <thead>
                 <tr>
@@ -153,7 +145,15 @@ const Result = () => {
                 </tr>
             </thead>
             <tbody>
-                 {renderList()}
+                 {selectedPlaylist ? renderList() 
+                    : <tr>
+                        <td>
+                          aucun playlist selectionne
+
+                        </td>
+                    </tr> 
+
+                 }
             </tbody>
 
         </table>
