@@ -56,7 +56,6 @@ const Body = () => {
                         <SideBar/>
                         <Result/>   
                     </div>
-
             </div>
         </div>
             <div className="spotify__footer">
@@ -65,5 +64,4 @@ const Body = () => {
     </div>
   )
 }
-
 export default Body

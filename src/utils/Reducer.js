@@ -3,6 +3,7 @@ export const initialState = {
   theme : localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light-theme',
   isSidebarOpen : false,
   token: null,
+  searchKey: "Gims",
   userInfo: null,
   loading: false, 
   playlists: [],
@@ -19,12 +20,21 @@ const reducer = (state, action) => {
           ...state,
           isSidebarOpen: action.value,
         };
+         case reducerCases.OPEN_SIDE_BAR:
+        return {
+          ...state,
+          isSidebarOpen: action.value,
+        };
         case reducerCases.SET_LOADING:
           return {
             ...state,
             loading: action.notLoading,
           };
-
+        case reducerCases.SET_SEARCHKEY:
+          return {
+            ...state,
+            seachKey: action.newSearchKey,
+          };
       case reducerCases.TOGGLE_THEME:
             return {
               ...state,
