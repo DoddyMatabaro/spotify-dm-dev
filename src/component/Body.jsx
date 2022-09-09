@@ -6,6 +6,7 @@ import SideBar from "./SideBar";
 import Header from "./Header";
 import Footer from "./Footer"
 import Result from "./Result";
+import Footer2 from "./Footer2";
 
 const Body = () => {
   const [{ token }, dispatch] = useGlobalContext();
@@ -59,7 +60,7 @@ const Body = () => {
             </div>
         </div>
             <div className="spotify__footer">
-                <Footer/>
+                <Footer2/>
             </div>
     </div>
   )

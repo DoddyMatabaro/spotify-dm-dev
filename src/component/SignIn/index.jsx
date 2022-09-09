@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import Header from '../Header'
 import './signIn.css'
+import {CLIENT_ID,REDIRECT_URI,api_uri, scope} from '/api'
 // import { GoogleLogin } from 'react-google-login';
 import { gapi } from 'gapi-script'; 
 
-
-const SingIn = ({ clientGoogleId }) => {
+const SingIn = () => {
   const handleClick = async () => {
-    const CLIENT_ID = "9b707ef30ad74876b0ebded1d118b9ce"
-    const REDIRECT_URI = "http://localhost:5174/callback/"
-    const api_uri = "https://accounts.spotify.com/authorize";
-    const scope = [
-      "user-read-private",
-      "user-read-email",
-      "user-modify-playback-state",
-      "user-read-playback-state",
-      "user-read-currently-playing",
-      "user-read-recently-played",
-      "user-top-read",
-    ];
+    // const CLIENT_ID = "9b707ef30ad74876b0ebded1d118b9ce"
+    // const REDIRECT_URI = "http://localhost:5174/callback/"
+    // const api_uri = "https://accounts.spotify.com/authorize";
+    // const scope = [
+    //   "user-read-private",
+    //   "user-read-email",
+    //   "user-modify-playback-state",
+    //   "user-read-playback-state",
+    //   "user-read-currently-playing",
+    //   "user-read-recently-played",
+    //   "user-top-read",
+    // ];
     window.location.href = `${api_uri}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${scope.join(
       " "
     )}&response_type=token&show_dialog=true`;
@@ -76,4 +76,4 @@ const SingIn = ({ clientGoogleId }) => {
   )
 }
 
-export default SingIn
+export default SingIn;
