@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import Header from '../Header'
 import './signIn.css'
-import {CLIENT_ID,REDIRECT_URI,api_uri, scope} from '/api'
+import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+dotenv.config()
 // import { GoogleLogin } from 'react-google-login';
 import { gapi } from 'gapi-script'; 
 
 const SingIn = () => {
+  const CLIENT_ID=process.env.CLIENT_ID;
+  const REDIRECT_URI = process.env.REDIRECT_URI;
+  const api_uri = process.env.api_uri;
+  const scope = process.env.scope;
+  
   const handleClick = async () => {
     // const CLIENT_ID = "9b707ef30ad74876b0ebded1d118b9ce"
     // const REDIRECT_URI = "http://localhost:5174/callback/"
